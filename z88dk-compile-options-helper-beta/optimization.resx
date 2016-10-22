@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="button2.ToolTip" xml:space="preserve">
+    <value>-SOn Selects the peephole optimization level for sdcc. 
+
+Level 0 does not perform any code substitutions. 
+
+Level 1 uses only the rules supplied by sdcc. 
+
+Level 2 uses the sdcc rules and some rules that fix some 
+of sdcc's code generation bugs. 
+
+Level 3 is the highest level and in addition to level two,
+ it introduces many new code substitution rules that can 
+reduce code size and improve speed. 
+
+Level 2 is the default.
+
+
+-SO0. Skip peephole optimizer.
+-SO1. Apply the rules provided by sdcc.
+-SO2. Apply the rules provided by sdcc 
+          along with rules that fix some code 
+          generation bugs.
+-SO3. Apply the rules provided by sdcc, 
+           the bugfix rules and a large set of 
+           aggressive rules provided by z88dk.
+
+Peephole Optimizer
+
+sdcc's output is passed through its own peephole optimizer 
+step that performs text substitutions on the compiler's 
+output. sdcc comes with some rules of its own but
+under z88dk we provide three different rule sets selected with 
+”-SOn” on the compile line.
+
+The SO3 rules have a significant impact on code size and speed 
+and are regularly expanded as we check code generation for 
+different programs. There are many hundreds of rules in the SO3 
+set so it is possible that errors may be present. If a program fails 
+to run with SO3 enabled, try a compile at SO2 level to rule out the 
+aggressive rules. A bug report in the z88dk forums would be 
+appreciated if the SO3 rules are found to be at fault.
+</value>
+  </data>
+  <data name="button5.ToolTip" xml:space="preserve">
+    <value>-On Selects z88dk's peephole optimization level. 
+Under sdcc the purpose of the optimization rules is different. 
+
+Level 0 will leave sdcc's output in its native asz80 format. 
+z88dk cannot assemble this format. 
+
+Level 1 translates sdcc's native format to more standard Zilog 
+syntax. 
+
+Level 2 changes sdcc's calls to its primitives to use a calling 
+convention  that saves extra bytes. The default is level 2.
+
+-O0. Skip peephole optimizer.
+-O1. Level 1 optimizations.
+-O2. Level 2 optimizations.
+-O3. Level 3 optimization that attempts
+         to reduce code size at the expense
+         of speed.
+
+The purpose of the -O optimization for sccz80 is code 
+optimization but under sdcc it's mainly for translation from 
+non-standard asz80 syntax (that sdcc uses) to standard 
+zilog and z80asm's section directives.  For sdcc changing from 
+the default O2 would only be done rarely. 
+
+The reason why it's the same option is that both usages are using 
+the same program to  do the optimization/translation 
+(copt: a regular expression engine).
+
+On  (sccz80) Set the peephole optimization level 0-3. O2 is the default.
+
+-On  (sdcc) Select the post-processing steps 0-2. 
+0 = leave sdcc output in asz80 form, 
+1 = translate sdcc output to zilog and z80asm directives, 
+2 = step one plus change sdcc calls to primitives to callee linkage. 
+
+O2 is the default.
+</value>
+  </data>
+  <data name="button7.ToolTip" xml:space="preserve">
+    <value>Another flag ”-opt-code-size” is intended to 
+indicate to sdcc that small code is preferred.
+In the unpatched version of sdcc, this currently
+has little effect except to use a subroutine to 
+set up stack frames inside functions and to 
+prefer small code to clear up the stack after
+ function calls. 
+
+The impact on code size is small but present.
+ In z88dk's version of sdcc, ”-opt-code-size” 
+will also significantly reduce the size of code 
+generated for handling 64-bit integers, 
+sometimes by up to 50%. 
+
+Recent changes also attempt to reduce code 
+size of programs making heavy use of longs 
+and floats where a 10% code  size reduction is 
+seen.</value>
+  </data>
+  <data name="button8.ToolTip" xml:space="preserve">
+    <value>sdcc applies an optimization level during code 
+generation that is supplied with the 
+”-max-allocs-per-node” flag. 
+Larger numbers permit sdcc to perform deeper 
+code analysis but this will also increase compile 
+time considerably.  The default is 3000 but a 
+reasonable upper bound is probably 200000.
+
+For sdcc max-allocs-per-node I think there has 
+to be a minimum non-zero value and something
+ like 1000 is ok for that. 
+
+There isn't really an upper limit except that set by 
+the computer's memory and your patience. 
+We recommend 200000 but the sdcc folks do use 
+one million when they do benchmarks. 
+
+For the slider maybe that should be the max.
+ Maybe some presets on the slider would be good 
+so you can click those and quickly move to 3000 (default), 
+30000 (good development number) and
+ 200000 (recommended release number). </value>
+  </data>
+  <data name="button4.ToolTip" xml:space="preserve">
+    <value>Optimization Functions
+
+* for optional optimization settings,
+
+ if sdcc is the compiler you're choosing
+ "--max-allocs-per-nodeNNNN", 
+"--opt-code-size", 
+"-SOn", (less important maybe omitted) 
+"-On". 
+
+
+If sccz80 is selected you're choosing 
+"-On". 
+
+See 
+http://www.z88dk.org/wiki/doku.php?id=temp:front#optimization_level
+</value>
+  </data>
+</root>

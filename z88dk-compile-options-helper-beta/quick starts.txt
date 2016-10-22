@@ -1,0 +1,465 @@
+
+
+Right now, the helper will offer options that will not always apply depending on previous or succeeding choices. 
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+One example is you have an option to choose between sdcc and sccz80 as compiler ("-compiler=sdcc" or "-compiler=sccz80"). 
+
+For the classic c library this is how the selection is being made but for the new c library it's being done via "-clib=new" or "-clib=sdcc_ix/sdcc_iy". 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+(This sort of inconsistency is coming about because it's a time of change inside the project, we have different people working on different parts and the classic lib has legacy code to worry about).
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Some of the options are not really usable - for example, the selection of assembler type. Only z80asm is fully supported; the other assemblers may have partial support from long ago but probably won't work anymore.
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+I think if the program works like a decision tree, pruning choices as decisions are made, with comments to help with choices, it could be quite useful especially for people unsure how to start or even for people who just want to quickly generate a compile line to stick into their build process.
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+HI Andy,
+
+I've got to head out soon so just some comments on the quick start:
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+1. choose target, yes must be first to narrow down options and enable others. Maybe sorted by +type with machine description afterward? I'm not sure what's best.
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2. on the next page the first choice should be between libraries new or classic. You have that labelled "Compiler Choice" now.
+* after that choose which compiler. If "new" was selected you're choosing amongst "clib=new" (sccz80), "clib=sdcc_ix" and sdcc_iy (sdcc). If "classic" was selected you're choosing between "-compiler=sdcc" or "-compiler=sccz80" (the latter is default).
+* if sdcc is the compiler, it's important to select "--reserve-regs-iy" or not. For "-clib=sdcc_iy" this is already selected by the compiler.
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+3. * for optional optimization settings, if sdcc is the compiler you're choosing "--max-allocs-per-nodeNNNN", "--opt-code-size", "-SOn", (less important maybe omitted) "-On". If sccz80 is selected you're choosing "-On". See http://www.z88dk.org/wiki/doku.php?id=temp:front#optimization_level
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+4. for classic compiles you're choosing "-lm", "-lmzx", "-lmzx_tiny" for floating point (the first uses z88dk's float implementation, the last two use the zx rom with the tiny being less accurate; -lmz is an alias for -lmzx and is used to mean use the native float implementation). for new compiles there is only -lm
+
+5. for classic compiles you're choosing which disk system to connect to stdio. This is actually mandatory and should be -lndos by default (no disk system). Other options for the zx are -lp3dos and a few for microdrives, opus that I can't recall offhand. These do not apply to the new c lib
+
+6. for -create-app you can optionally add a subtype to change the output type. The default is tape. For the new lib you can add "-subtype=if2" only if startup>=32 (see below) to make an if2 cartridge. For the classic lib you can possibly build (it may not work) if2 carts with subtype=rom. There are other subtypes too: wav, turbo, zxvgs. The first two affect tapes and the last is for the zxvgs which is a zx spectrum variant.
+
+7.  After the library is selected you can also choose startup values. These decide what sort of terminal drivers will be used
+* For new there is -startup=0/1 (32 columns), 4/5 (64 columns), 8/9 (fzx), 31 (none for games mainly); then a repeat of above with 32 added (32/33, 36/37, 40/41, 63) for if2 cartridges. default is 0
+* For classic there is if2 (startup=2) I think and possible one or two more. 0 is default.
+
+8.  You may also want to optionally change the -zorg=nnn value to change the org address.
+
+
+
+quick starts
+
+
+cpc
+http://www.z88dk.org/wiki/doku.php?id=platform:amstradcpc
+zcc +cpc -lndos -lm -create-app -o program adv_a.c
+zcc +cpc -clib=ansi -lcpcfs -lmz -create-app -o program adv_a.c
+
+Floating Point Support
+-lmz
+or 
+-lm
+
+The code is compiled by default to address $6000 (24576)
+If you produce code under $1200 and needs to get loaded then run from BASIC, the “memory” command is required; in example, to compile and run a program located at $400:
+
+-zorg=1024
+
+Amstrad NC
+http://www.z88dk.org/wiki/doku.php?id=platform:amstradnc
+Program to be stored onto the PCMCIA card:
+zcc +nc -lm application.c
+
+Program to be loaded into RAM:
+zcc +nc -subtype=ram -lm application.c
+
+Z88 Platform
+http://www.z88dk.org/wiki/doku.php?id=platform:z88
+zcc +z88 -create-app -oapp.bas -make-app app.c
+
+Canon X-07
+zcc +x07 -lndos -create-app program.c
+
+The binary converter (appmake) will create two files, “a.cas” (the BASIC loader) and “a_2.cas” (the M/C data).
+zcc +x07 -lndos -create-app -Cz--audio program.c
+
+Commodore 128
+zcc +c128 -create-app program.c
+
+CPM
+zcc +cpm -lm -o adventure.com adv_a.c
+
+Tatung Einstein
+zcc  +cpm -lm -leinstein -oPROGRAM.COM program.c
+
+EACA Colour Genie EG2000
+zcc  +trs80 -lndos -lm -create-app -subtype=eg2000disk program.c
+
+Epson PX4 (HC-40)
+zcc +cpm -lpx4  -create-app -oname name.c
+zcc +cpm -lpx4  -create-app -oname name.c -pragma-need=ansiterminal -pragma-define:ansipixels=240 -pragma-define:ansicolumns=60
+
+ROM file formats:
+zcc +cpm -subtype=px4  -create-app -oname name.c
+zcc +cpm -subtype=px4 -Cz--32k -create-app -oname name.c
+zcc +cpm -subtype=px4ansi  -create-app -oname name.c -pragma-define:ansicolumns=60
+
+Epson PX4 (HC-40)
+COM file format:
+zcc +cpm -lpx4  -create-app -oname name.c
+zcc +cpm -lpx4  -create-app -oname name.c -pragma-need=ansiterminal -pragma-define:ansipixels=240 -pragma-define:ansicolumns=60
+
+ROM file formats:
+zcc +cpm -subtype=px4  -create-app -oname name.c
+zcc +cpm -subtype=px4 -Cz--32k -create-app -oname name.c
+zcc +cpm -subtype=px4ansi  -create-app -oname name.c -pragma-define:ansicolumns=60
+
+The ANSI VT emulation can work in several column size variants:
+-pragma-define:ansicolumns=30
+-pragma-define:ansicolumns=34
+-pragma-define:ansicolumns=40
+-pragma-define:ansicolumns=48
+-pragma-define:ansicolumns=60
+
+
+Epson PX8 (HC-80)
+zcc +cpm -create-app -oname name.c
+zcc +cpm -subtype=px -create-app -oname name.c
+zcc +cpm -subtype=px32k -create-app -oname name.c
+
+
+Enterprise 64/128 Platform
+zcc  +enterprise -lm -create-app -oprogram program.c
+zcc  +enterprise -subtype=com -lm -oprogram.com program.c
+Optional libraries are provided for a partial support of the 'standard' monochrome graphics, use the ”-gfxep” parameter for a 336×243 resolution and ”-lgfxephr” for 672×243. Some implementations are slow and incomplete, but being totally connected via the EXOS the libraries should bear video mode tweakings.
+
+
+Grundy Newbrain
+zcc  +newbrain -lm -lndos -create-app program.c
+zcc  +newbrain -lm -lnbdrv -create-app program.c
+
+The “startup=2” option enables an irq extender, still under development. This option won't work on expanded models.
+zcc  +newbrain -lm -startup=2 -create-app program.c
+
+The ”-zorg=<location>” option locates the code at the desired position; it has effect also on the “appmake” tool, which will adapt the loader for the new location.
+zcc  +newbrain -lm -zorg=20000 -create-app program.c
+
+It is an advanced way to pass parameters to the appmake tool; in this case we've specified a different file name.
+zcc  +newbrain -lm -Cz-o -Cz-myname -create-app program.c
+
+
+-h   --help		(bool)    Display this help
+-b   --binfile	(string)  Linked binary file
+-c   --crt0file	(string)  crt0 file used in linking
+-o   --output	(string)  Name of output file
+-a   --ascii	(bool)    Generate a BASIC loader in plain text
+--blockname       (string)  Name of the binary block in tape
+--org             (integer) Origin of the binary
+
+
+The Jupiter ACE
+zcc +ace -create-app program.c
+
+To insert the ANSI VT emulation, and change the default program name, type:
+zcc +ace -clib=ansi -create-app -Cz--audio -o program program.c
+
+
+Luxor ABC80
+zcc +abc80 -lm -o adventure -create-app adv_a.c
+zcc +abc80 -lm  -subtype=wav -o adventure -create-app adv_a.c
+
+Luxor ABC 800
+zcc +abc800 -zorg=40000 -create-app program.c
+
+
+Camputers Lynx
+zcc +lynx -lm -create-app adv_a.c
+zcc +lynx -lm -o adventure.z80 adv_a.c
+
+
+Mattel Aquarius
+http://www.z88dk.org/wiki/doku.php?id=platform:aquarius
+zcc +aquarius -lm -create-app -o adventure adv_a.c
+zcc +aquarius -subtype=ansi -lm -create-app -o adventure adv_a.c
+
+
+Galaksija
+zcc +gal -create-app -o adventure adv_a.c
+
+
+Lambda 8300 / Power 3000
+
+The Lambda 8300 is an improved chinese clone of the ZX81.
+zcc +lambda -lzx81_math -create-app program.c
+–or–
+zcc +lambda -lm -create-app program.c
+The latter option will use the ROM for Floating Point, which will produce small but slower and less accurate code.
+
+CCE MC-1000
+zcc +mc1000 -create-app -Cz--audio program.c
+zcc +mc1000 -clib=ansi -create-app -Cz--audio program.c
+zcc +mc1000 -subtype=gaming -create-app -Cz--audio program.c
+
+
+MSX 
+zcc +msx -create-app adv_a.c
+zcc +msx -create-app -subtype=wav adv_a.c
+zcc +msx -subtype=msxdos -oadva.com -lm adv_a.c
+
+
+Memotech MTX
+MTX 500 mode (32K):
+zcc +mtx -lndos -create-app -Cz--audio -oadventure.bin adv_a.c
+
+MTX 512 mode (64K and more):
+zcc +mtx -lndos -create-app -startup=2 -Cz--audio -oadventure.bin adv_a.c
+
+
+NASCOM 1 & 2
+zcc +nascom -lm -o adventure -create-app adv_a.c
+or
+zcc +nascom -clib=ansi -lm -o adventure -create-app adv_a.c
+
+Philips P2000
+zcc +p2000 -create-app -lm program.c
+or
+zcc +p2000 -subtype=ansi -create-app -lm program.c
+
+
+Philips Videopac C7420
+
+zcc +c7420 -create-app program.c
+or
+zcc +c7420-create-app -zorg=<location> program.c
+
+
+Philips VG-5000
+zcc +vg5k -subtype=wav -create-app -lm program.c
+or
+zcc +vg5k -clib=ansi -subtype=wav -create-app -lm program.c
+
+
+NEC PC-6001
+http://www.z88dk.org/wiki/doku.php?id=platform:pc6001
+
+zcc +pc6001 -create-app -lm program.c
+or
+zcc +pc6001 -clib=ansi -subtype=32k -oprogram -create-app -lm program.c
+
+
+Robotron Z1013
+zcc +z1013 -lm -o adventure -create-app adv_a.c
+or
+zcc +z1013 -clib=ansi -lm -o adventure -create-app adv_a.c
+
+
+SAM Coupe
+zcc +sam -lm application.c
+or
+zcc +sam -clib=ansi -lm application.c
+
+
+S-OS (The Sentinel)
+zcc +sos -lndos -oadva -create-app adv_a.c
+or
+zcc +sos -lgendos -lmalloc -DAMALLOC -oadva -create-app adv_a.c
+
+
+SEGA SC-3000
+zcc +sc3000 -create-app -Cz--audio -oadventure adv_a.c
+or
+zcc +sc3000 -create-app -subtype=sf7000 -Cz--audio -oadventure -zorg=40000 adv_a.c
+
+Experimental option to create a ROM cartridge
+zcc +sc3000 -subtype=rom -omyrom.sc program.c
+
+
+
+Sharp MZ family
+zcc +mz -lm -o adventure -create-app adv_a.c
+or
+zcc +mz -subtype=ansi -lm -o adventure -create-app adv_a.c
+
+zcc +mz -subtype=ansi -lm -o adventure -create-app -Cz--audio -Cz--fast adv_a.c
+
+
+Sharp X1
+
+IM1 mode (org at address 0)
+zcc +x1 -lm -lndos adv_a.c
+
+80 columns mode (still IM1)
+zcc +x1 -pragma-define:ansicolumns=80 -lndos vtstone.c
+
+IM2 mode (org address = 32768 or more)
+zcc +x1 -subtype=im2 -lndos -zorg=<address> -lm adv_a.c
+
+
+
+Sharp OZ-700
+ zcc +oz -O3 ansitest.c -pragma-define:ansicolumns=26
+Valid columns are 34, 39, 47, 59 (default), and 78.
+
+ zcc +oz -lm -o adv.bin adv_a.c
+  makewzd adv
+  
+  
+Sorcerer Exidy
+zcc +srr -lm -lndos -create-app dstar.c -Cz--audio
+
+
+Sinclair ZX80
+zcc +zx80 -lm -create-app -Cz–audio program.c
+
+
+Sinclair ZX81
+http://www.z88dk.org/wiki/doku.php?id=platform:zx81
+
+zcc +zx81 -lzx81_math -create-app program.c
+–or–
+zcc +zx81 -lm -create-app program.c
+
+The latter option will use the ROM for Floating Point, which will produce small but slower and less accurate code.
+
+
+The following SUBTYPE options (use ”-subtype=xxxx”) are available:
+
+default (or unspecified): ”-startup=2” mode, the common SLOW text mode, used also by the Memotech and G007 High Resolution Graphics drivers
+fast: no handler
+wrx, wrx64, _wrx, _wrx64: High Resolution Graphics modes, Wilf Rigter's mod
+gray: two 64 line GFX pages being interlaced in WRX mode
+chroma, _chroma, chroma64, _chroma64, chromag: similar to WRX and gray libs above + colour attributes area
+arx, arx64, _arx, _arx64: High Resolution Graphics modes, Andy Rea's mod
+The following CLIB options (use ”-clib=xxxx”) are available:
+
+(default): lo rez graphics, default clib
+udg: mid rez graphics (64×72), default clib. Requires a mod permitting to redefine the ZX81 font.
+ansi: ANSI VT emulation in WRX mode, 192 lines HRG lib is included, also good in chroma mode
+arx, arx64: default clib, 192/64 lines HRG in ARX mode
+wrx, wrx64: default clib, 192/64 lines HRG in WRX mode, also good in chroma mode
+wrxansi, wrx64ansi: ansi VT emulation, 192/64 lines HRG in WRX mode, also good in chroma mode
+mt, mt64: default clib, MemoTech HRG modes
+g007: default clib, G007 HRG mode (requires the HRG being set up from BASIC: CLS 2 / SLOW 4)
+The default math library does not work due to the fact the IY register is used so specific libraries are provided:
+
+zx81_math: bigger but much faster library, all the functions are provided by z88dk
+m81: much smaller and slower library, all the computations happen in ROM
+m81_tiny: even smaller lib, some formatting/precision setting trick is excluded
+
+Programs cannot easily be run over the first 16K memory limit: the RAMTOP is not positioned automatically over it. There is also a further problem when running in HRG mode, a special character vector declared in the startup code need to be kept in that limit too.
+
+Z88DK is capable of running in graphics mode with a small hardware modification to the memory expansion, known as the Wilf Rigter's WRX mode. There are many ways to modify your memory circuitry to make the High Resolution work; here is a link to the original article, explaining (at the end) how to do it easily with the original 16K RAMPACK expansion.
+
+The High Resolution can be activated by passing a value greater than 2 to the “startup” parameter, in example:
+
+zcc +zx81 -subtype=wrx -clib=ansi -lm81 -create-app program.c
+..will enable the 256×192 graphics in WRX mode and the ANSI VT emulation.
+
+zcc +zx81 -clib=mt -lm81 -create-app program.c
+..will enable the graphics in Memotech mode (no text support, sorry).
+
+zcc +zx81 -clib=g007 -lm81 -create-app program.c
+..will enable the graphics in G007 mode (no text support, sorry).
+
+If you are testing your program with the EightyOne emulator please be aware that at the moment only the earlier versions do correctly emulate the G007 and the MemoTech HRG boards. Version 0.42 (TestZ) is a good option for the Memotech board; the 1.0 (Test a) can still support the G007 but already fails with Memotech.
+
+See also the HRG section of the ZX81 library description page. It contaings important informations on how to manage the memory locations for the HRG page.
+
+
+Sinclair ZX Spectrum
+http://www.z88dk.org/wiki/doku.php?id=platform:zx
+zcc +zx -lndos -create-app adv_a.c
+zcc +zx -clib=ansi -lndos -create-app adv_a.c
+
+floating point
+-lm
+
+zcc +zx -clib=ansi -lm -create-app -subtype=wav program.c
+zcc +zx -clib=ansi -lm -create-app -subtype=turbo program.c
+
+
+
+Sord M5
+http://www.z88dk.org/wiki/doku.php?id=platform:sordm5
+
+zcc  +m5 -lm -create-app -Cz--audio program.c
+
+
+Spectravideo SVI
+zcc  +svi -lm -create-app program.c
+
+
+Peters Plus Sprinter
+zcc +pps -o adventure.exe adv_a.c
+zcc +pps -clib=ansi -o adventure.exe adv_a.c
+
+
+
+Timex TS2068 and TS2048 (ZX Spectrum clones)
+http://www.z88dk.org/wiki/doku.php?id=platform:ts2068
+
+zcc  +ts2068 -subtype=nohrg -create-app program.c
+zcc  +ts2068 -create-app program.c
+zcc  +ts2068 -clib=ansi -create-app program.c
+
+
+
+Texas Instruments calculators
+http://www.z88dk.org/wiki/doku.php?id=platform:ticalc
+The TI calculators port has been thought to get a common compatibility layer. The VT/ANSI library features the same text resolution for all the platforms, permitting the applications to be easily ported.
+
+
+zcc +ti82 -lm -o adv_a -create-app adv_a.c
+
+zcc +ti83 -lm -o adv_a -create-app adv_a.c
+
+zcc +ti8x -lm -o adv_a -create-app adv_a.c
+
+zcc +ti85 -lm -o adv_a -create-app adv_a.c
+
+zcc +ti86 -lm -o adv_a -create-app adv_a.c
+
+or, for special text support…
+
+zcc +ti82 -lndos -O3 -create-app -pragma-need=ansiterminal -pragma-define:ansicolumns=24 -o adv_a adv_a.c
+
+..being 'ansicolums' an optional parameter (normally set to 32) which for the TI82..TI84 models can be 12, 13, 16, 19, 24 or 32.
+
+On the TI85..TI86 models you can choose between 16, 18, 21, 25, 32 and 42.
+
+
+TIKI-100
+zcc  +cpm -startup=2 -lm -ltiki100 -oPROGRAM.COM program.c
+
+
+
+TRS 80
+http://www.z88dk.org/wiki/doku.php?id=platform:trs80
+
+zcc  +trs80 -lndos -lm -create-app -subtype=disk program.c
+zcc  +trs80 -lndos -lm -create-app program.c
+zcc  +trs80 -lndos -lm -create-app program.c
+
+
+Old School Computer Architecture
+http://www.z88dk.org/wiki/doku.php?id=platform:osca
+OSCA
+zcc  +osca -lm -lndos -o program.exe program.c
+zcc  +osca -lm -lflosdos -o program.exe program.c
+zcc  +osca -subtype=ansi -lm -lflosdos -o program.exe program.c
+
+
+VZ 200
+http://www.z88dk.org/wiki/doku.php?id=platform:vz200
+zcc +vz -lm -o adventure.vz adv_a.c
+zcc +vz -clib=ansi -lm -o adventure.vz adv_a.c
+
+
+
+Xircom REX 6000
+http://www.z88dk.org/wiki/doku.php?id=platform:xircomrex
+
+zcc +rex -create-app -lm hello.c
+zcc +rex -subtype=lib -create-app -lm libcode.c
+
+

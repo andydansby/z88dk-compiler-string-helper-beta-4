@@ -1,0 +1,890 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="button3.ToolTip" xml:space="preserve">
+    <value>Sinclair ZX Spectrum
+
+Native Console I/O	
+32x24 and 64x24
+
+VT100 Console I/O
+24..85x24(Colour)
+
+Monochrome Graphics
+256x192	
+
+Grey Graphics	
+No
+
+File I/O
+Yes
+
+ZSock Network
+No
+
+Sound
+1 Bit + PSG
+
+Other features / notes
+Sprite Pack. 
+Native file IO available for +3 and Microdrive; 
+BASIC driver supports many other disc types.</value>
+  </data>
+  <data name="button4.ToolTip" xml:space="preserve">
+    <value>Timex / Sinclair 2068
+
+Native Console I/O	
+32x24 and 64x24
+
+VT100 Console I/O
+24..85x24(Colour)
+
+Monochrome Graphics
+256x192	
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit
+
+Other features / notes
+Sprite Pack.</value>
+  </data>
+  <data name="button5.ToolTip" xml:space="preserve">
+    <value>Sinclair ZX81
+
+Native Console I/O	
+32x24
+
+VT100 Console I/O
+24..85x24(HRG Mono)
+
+Monochrome Graphics
+64×48 + HRG modes
+
+Grey Graphics	
+Yes
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit + PSG
+
+Other features / notes
+Sprite Pack, 
+1bit sound blanks the screen
+</value>
+  </data>
+  <data name="button6.ToolTip" xml:space="preserve">
+    <value>Sinclair ZX80
+
+Native Console I/O	
+32x24
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+64×48
+
+Grey Graphics	
+Yes
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+as for Z81
+
+Other features / notes
+Good compatibility with ZX81, 
+tricks to try keeping the display stable</value>
+  </data>
+  <data name="button7.ToolTip" xml:space="preserve">
+    <value>Mattel Aquarius
+
+Native Console I/O	
+Yes
+
+VT100 Console I/O
+40×24
+
+Monochrome Graphics
+80x72
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit + PSG
+
+Other features / notes</value>
+  </data>
+  <data name="button8.ToolTip" xml:space="preserve">
+    <value>Jupiter Ace
+
+Native Console I/O	
+32×24
+
+VT100 Console I/O
+32×24(B&amp;W)
+
+Monochrome Graphics
+64x72
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit
+
+Other features / notes</value>
+  </data>
+  <data name="button11.ToolTip" xml:space="preserve">
+    <value>Lambda 8300
+
+Native Console I/O	
+32×24 (B&amp;W)
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+64×48
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit*
+
+Other features / notes
+(via tape output)</value>
+  </data>
+  <data name="button12.ToolTip" xml:space="preserve">
+    <value>Galaksija
+
+Native Console I/O	
+32×16 (B&amp;W)
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+64×48
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit*
+
+Other features / notes
+(via tape output)</value>
+  </data>
+  <data name="button13.ToolTip" xml:space="preserve">
+    <value>Enterprise 64/128
+
+Native Console I/O	
+40×25
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+No*
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+Yes
+
+Other features / notes
+336×243 and 672×243 GFX via EXOS</value>
+  </data>
+  <data name="button15.ToolTip" xml:space="preserve">
+    <value>CP/M
+
+Native Console I/O	
+OS Calls
+
+VT100 Console I/O
+If Hardware Supported
+
+Monochrome Graphics
+No
+
+Grey Graphics	
+No
+
+File I/O
+Yes
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes</value>
+  </data>
+  <data name="button18.ToolTip" xml:space="preserve">
+    <value>Commodore 128 (z80)
+
+Native Console I/O	
+No
+
+VT100 Console I/O
+40×25
+
+Monochrome Graphics
+up to 640x480
+
+Grey Graphics	
+No
+
+File I/O
+CP/M only
+
+ZSock Network
+No
+
+Sound
+SID
+
+Other features / notes
+Steve Goldsmith tools are supported</value>
+  </data>
+  <data name="button19.ToolTip" xml:space="preserve">
+    <value>Grundy Newbrain
+
+Native Console I/O	
+Yes
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+No*
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+* could work on expanded systems
+in non-standard mode, via stream
+functions</value>
+  </data>
+  <data name="button22.ToolTip" xml:space="preserve">
+    <value>Memotech MTX
+
+Native Console I/O	
+40x24
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+256x192
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+Most of GFXLIB by Rafael de Oliveira Jannone</value>
+  </data>
+  <data name="button23.ToolTip" xml:space="preserve">
+    <value>MSX
+
+Native Console I/O	
+40x24
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+256x192
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit + PSG
+
+Other features / notes
+GFXLIB by Rafael de Oliveira Jannone</value>
+  </data>
+  <data name="button24.ToolTip" xml:space="preserve">
+    <value>CCE MC-1000
+
+Native Console I/O	
+Yes
+
+VT100 Console I/O
+24..85x24
+
+Monochrome Graphics
+256x192
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit
+
+Other features / notes
+Far memory support + many other features</value>
+  </data>
+  <data name="button27.ToolTip" xml:space="preserve">
+    <value>v6z80p (OSCA)
+
+Native Console I/O	
+40x24
+
+VT100 Console I/O
+40x24
+
+Monochrome Graphics
+300x200
+
+Grey Graphics	
+No
+
+File I/O
+Yes
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+2 different file access libraries</value>
+  </data>
+  <data name="button29.ToolTip" xml:space="preserve">
+    <value>Cambridge Z88
+
+Native Console I/O	
+Yes
+
+VT100 Console I/O
+Yes
+
+Monochrome Graphics
+256x64
+
+Grey Graphics	
+No
+
+File I/O
+Yes
+
+ZSock Network
+Yes
+
+Sound
+1 Bit
+
+Other features / notes
+Far memory support 
++ many other features</value>
+  </data>
+  <data name="button30.ToolTip" xml:space="preserve">
+    <value>Canon X-07
+
+Native Console I/O	
+Yes
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+No
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+Experimental port 
+(feedback is welcome)</value>
+  </data>
+  <data name="button40.ToolTip" xml:space="preserve">
+    <value>Spectravideo SVI
+
+Native Console I/O	
+40x24
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+256x192
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit + PSG
+
+Other features / notes
+Most of GFXLIB by Rafael de Oliveira Jannone</value>
+  </data>
+  <data name="button41.ToolTip" xml:space="preserve">
+    <value>Sorcerer Exidy
+
+Native Console I/O	
+64x30
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+128x90
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+–300bps' extra mode in appmake</value>
+  </data>
+  <data name="button43.ToolTip" xml:space="preserve">
+    <value>Sega SC-3000
+
+Native Console I/O	
+40x24
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+256x192
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+Most of GFXLIB by Rafael de Oliveira Jannone</value>
+  </data>
+  <data name="button44.ToolTip" xml:space="preserve">
+    <value>S-OS (The Sentinel)
+
+Native Console I/O	
+OS Calls
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+256x192
+
+Grey Graphics	
+No
+
+File I/O
+Yes
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+Multi platform OS published in a 
+Japanese PC magazine</value>
+  </data>
+  <data name="button45.ToolTip" xml:space="preserve">
+    <value>Sam Coupe
+
+Native Console I/O	
+32x24
+
+VT100 Console I/O
+24..85x24(Colour)
+
+Monochrome Graphics
+No
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 bit
+
+Other features / notes
+Sprite Pack. Music might play 
+at a higher pitch due to CPU 
+frequency.</value>
+  </data>
+  <data name="button46.ToolTip" xml:space="preserve">
+    <value>Xircomm Rex 6000
+
+Native Console I/O	
+No
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+No
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+Graham Cobb's stdio library was
+ due to be integrated into z88dk
+ v1.6. The Rex supplies has its 
+ own library mostly divergent from
+ the standard z88dk library</value>
+  </data>
+  <data name="button48.ToolTip" xml:space="preserve">
+    <value>Peters Plus Sprinter
+
+Native Console I/O	
+80×35(?)
+
+VT100 Console I/O
+80×35(?) (Colour)
+
+Monochrome Graphics
+No
+
+Grey Graphics	
+No
+
+File I/O
+Yes
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes</value>
+  </data>
+  <data name="button49.ToolTip" xml:space="preserve">
+    <value>NEC PC-6001
+
+Native Console I/O	
+32x16
+
+VT100 Console I/O
+32x16*
+
+Monochrome Graphics
+128x192*
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+PSG Only
+
+Other features / notes
+(*) Not in MKII mode</value>
+  </data>
+  <data name="button50.ToolTip" xml:space="preserve">
+    <value>Philips P2000
+
+Native Console I/O	
+40x24
+
+VT100 Console I/O
+Monochrome 40×24
+
+Monochrome Graphics
+78x72
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+1 Bit
+
+Other features / notes</value>
+  </data>
+  <data name="button51.ToolTip" xml:space="preserve">
+    <value>Sharp OZ
+
+Native Console I/O	
+Yes
+
+VT100 Console I/O
+No
+
+Monochrome Graphics
+239x80
+
+Grey Graphics	
+No
+
+File I/O
+No
+
+ZSock Network
+No
+
+Sound
+No
+
+Other features / notes
+Experimental</value>
+  </data>
+</root>
